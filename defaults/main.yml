@@ -1,2 +1,19 @@
 ---
 # defaults file for common
+suported_OS:
+  - RedHat
+
+required_packages:
+  - name: '{{ GIT }}'
+    state: latest
+  - name: '{{ VIM }}'
+    state: latest
+  - name: '{{ BASH_COMPLETION }}'
+    state: latest
+  - name: '{{ GCC }}'
+    state: latest
+  - name: '{{ CPP }}'
+    state: latest
+
+python_version: 3
+python_subversion: 4

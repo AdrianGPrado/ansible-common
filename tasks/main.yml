@@ -1,2 +1,25 @@
 ---
 # tasks file for common
+- fail: msg='OS not suported'
+  when: '"{{ ansible_os_family }}" not in suported_OS'
+
+- name: Include package names to install in '{{ ansible_os_family }}'
+  include_vars: '{{ ansible_os_family }}_vars.yml'
+
+- debug:
+    msg: '{{ ansible_os_family }}'
+
+- name: Update system
+  package:
+    name=*
+    state=latest
+
+- name: Install DevOps required:with_items packages
+  package:
+    name='{{ item.name }}'
+    state='{{ item.state }}'
+  with_items: '{{ required_packages }}'
+
+# - include: 'install_python.yml'
+
+# - include: 'install_pip.yml'

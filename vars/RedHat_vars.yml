@@ -1,0 +1,12 @@
+---
+# Packages names might vary between OS
+
+GIT: 'git' 
+VIM: 'vim'
+BASH_COMPLETION: 'bash-completion'
+GCC: 'gcc'
+CPP: 'gcc-c++'
+
+# python command with version in RedHat does not have a '-'
+python_cmd: "python{{ python_version }}.{{ python_subversion }}"
+python_pkg: "python{{ python_version }}{{ python_subversion }}"
