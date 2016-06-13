@@ -1,0 +1,24 @@
+---
+#--------------------------------------------
+# Pip 3 Installation process
+#--------------------------------------------
+- name: Check to see if "{{ pip_cmd }}" is already installed.
+  command: "{{ pip_cmd }} --version"
+  ignore_errors: true
+  # read-only task
+  changed_when: false
+  # for check mode
+  always_run: true
+  register: pip_version_is_installed
+
+- name: Install "{{ pip_cmd }}".
+  when: pip_version_is_installed | failed
+  get_url: 
+    dest='{{ pip_download_path }}'
+    url=https://bootstrap.pypa.io/get-pip.py
+
+# If python development version is needed.
+# python_devel is defined under /roles/python/vars/
+- name: Install "{{ pip_cmd }}" devel.
+  when: pip_version_is_installed | failed
+  command: '{{ python_cmd }} {{ pip_download_path }} creates=/usr/local/bin/pip'

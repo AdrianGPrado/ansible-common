@@ -17,3 +17,6 @@ required_packages:
 
 python_version: 3
 python_subversion: 4
+
+pip_cmd: 'pip{{ python_version }}'
+pip_download_path: /tmp/get_pip.py
