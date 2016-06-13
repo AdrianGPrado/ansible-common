@@ -11,7 +11,7 @@
     name=*
     state=latest
 
-- name: Install DevOps required:with_items packages
+- name: Install DevOps required packages
   package:
     name='{{ item.name }}'
     state='{{ item.state }}'
