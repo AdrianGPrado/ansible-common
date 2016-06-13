@@ -20,6 +20,6 @@
     state='{{ item.state }}'
   with_items: '{{ required_packages }}'
 
-# - include: 'install_python.yml'
+- include: 'install_python.yml'
 
 # - include: 'install_pip.yml'

@@ -8,5 +8,5 @@ GCC: 'gcc'
 CPP: 'gcc-c++'
 
 # python command with version in RedHat does not have a '-'
-python_cmd: "python{{ python_version }}.{{ python_subversion }}"
-python_pkg: "python{{ python_version }}{{ python_subversion }}"
+python_cmd: 'python{{ python_version }}.{{ python_subversion }}'
+python_pkg: 'python{{ python_version }}{{ python_subversion }}'

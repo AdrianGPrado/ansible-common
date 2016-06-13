@@ -1,0 +1,26 @@
+---
+#--------------------------------------------
+# Python 3 Installation process
+#--------------------------------------------
+- name: Check to see if "{{ python_cmd }}" is already installed.
+  command: "{{ python_cmd }} --version"
+  ignore_errors: true
+  # read-only task
+  changed_when: false
+  # for check mode
+  always_run: true
+  register: py_version_is_installed
+
+- name: Install "{{ python_pkg }}".
+  when: py_version_is_installed | failed
+  package:
+    name: "{{ python_pkg }}"
+    state: latest
+
+# If python development version is needed.
+# python_devel is defined under /roles/python/vars/
+- name: Install "{{ python_pkg }}" devel.
+  when: py_version_is_installed | failed
+  package:
+    name: "{{ python_pkg }}-devel"
+    state: latest
